@@ -8,7 +8,7 @@ import sys
 sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
 
 # サーバが待ち受けている特定の場所にソケットを接続します。
-server_address = '/tmp/socket_file'
+server_address = 'socket.sock'
 print('connecting to {}'.format(server_address))
 
 # サーバに接続を試みます。
