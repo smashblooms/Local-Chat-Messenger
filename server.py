@@ -6,7 +6,7 @@ import os
 sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
 
 # このサーバが接続を待つUNIXソケットのパスを設定します
-server_address = '/tmp/socket_file'
+server_address = 'socket.sock'
 
 # 以前の接続が残っていた場合に備えて、サーバアドレスをアンリンク（削除）します
 try:
