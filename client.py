@@ -35,7 +35,7 @@ try:
     message = message.encode("utf-8")
     sock.sendall(message)
 
-    # サーバからの応答を待つ時間を2秒間に設定します。
+    # サーバからの応答を待つ時間を10秒間に設定します。
     # この時間が過ぎても応答がない場合、プログラムは次のステップに進みます。
     sock.settimeout(10)
 
@@ -56,7 +56,7 @@ try:
             else:
                 break
 
-    # 2秒間サーバからの応答がなければ、タイムアウトエラーとなり、エラーメッセージを表示します。
+    # 10秒間サーバからの応答がなければ、タイムアウトエラーとなり、エラーメッセージを表示します。
     except TimeoutError:
         print("Socket timeout, ending listening for server messages")
 
