@@ -1,23 +1,27 @@
 import socket
 import os
+from faker import Faker
 
+fake = Faker()
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
 server_address = ("127.0.0.1", 8000)
 
-print("starting up on {}".format(server_address))
+print("サーバーを起動中: {}".format(server_address))
 
 sock.bind(server_address)
 
 while True:
-    print("\nwaiting to receive message")
+    print("--------------------------------")
+    print("\nメッセージの受信を待機中...")
 
     data, address = sock.recvfrom(4096)
 
-    print("received {} bytes from {}".format(len(data), address))
+    print("{} バイトのメッセージを受信しました: {}".format(len(data), address))
     print(data)
 
     if data:
-        sent = sock.sendto(data, address)
-        print("sent {} bytes back to {}".format(sent, address))
+        data = fake.name()
+        sent = sock.sendto(data.encode("utf-8"), address)
+        print("sent {} バイトのメッセージを送信しました: {}".format(sent, address))

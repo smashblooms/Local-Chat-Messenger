@@ -4,23 +4,23 @@ sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
 server_address = ("127.0.0.1", 8000)
 
-
 address = ("127.0.0.1", 8001)
-
-message = b"Message to send to the client."
 
 
 sock.bind(address)
 
 try:
-    print("sending {!r}".format(message))
+    message = input("送信するメッセージを入力してください: ")
+    message = message.encode("utf-8")
+
+    print("{!r}".format(message) + "を送信中...")
     sent = sock.sendto(message, server_address)
 
-    print("waiting to receive")
+    print("サーバーからの返答を待機中...")
     data, server = sock.recvfrom(4096)
 
-    print("received {!r}".format(data))
+    print("サーバーから次のメッセージを受信しました: {!r}".format(data))
 
 finally:
-    print("closing socket")
+    print("ソケットを閉じています...")
     sock.close()
