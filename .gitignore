@@ -3,6 +3,11 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+.vscode/
+
+udp_socket_file
+udp_client_socket_file
+
 # C extensions
 *.so
 
